@@ -1,0 +1,31 @@
+{
+  "name": "react-starter",
+  "version": "1.0.0",
+  "description": "react application starter kit",
+  "main": "index.js",
+  "scripts": {
+    "start": "gulp",
+    "test": "gulp test"
+  },
+  "author": "Boris",
+  "license": "MIT",
+  "dependencies": {
+    "alt": "^0.17.1",
+    "babelify": "^6.2.0",
+    "browserify": "latest",
+    "gulp": "latest",
+    "gulp-concat": "latest",
+    "gulp-react": "latest",
+    "gulp-sass": "latest",
+    "gulp-server-livereload": "latest",
+    "gulp-util": "latest",
+    "gulp-watch": "latest",
+    "react": "latest",
+    "react-router": "latest",
+    "reactify": "latest",
+    "superagent": "^1.3.0",
+    "vinyl-source-stream": "latest",
+    "watchify": "latest",
+    "whatwg-fetch": "latest"
+  }
+}
