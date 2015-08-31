@@ -6,7 +6,7 @@ class Github {
   }
 
   searchRepos(searchTerm) {
-    var promise = new Promise((resolve, reject) => {
+    return new Promise((resolve, reject) => {
       rest
         .get(`${this.baseUrl}/search/repositories`)
         .query({ q: searchTerm })
@@ -15,7 +15,6 @@ class Github {
           resolve(result.body.items);
         });
     });
-    return promise;
   }
 
   getRepoDetails(owner, name) {
