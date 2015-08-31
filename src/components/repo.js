@@ -8,11 +8,11 @@ const Repo = React.createClass({
     return RepoStore.getState()
   },
 
-  onChange() {
-    this.setState(RepoStore.getState())
+  onChange(state) {
+    this.setState(state)
   },
 
-  componentWillMount() {
+  componentDidMount() {
     let { owner, name } = this.props.params
     RepoActions.getRepoDetails(owner, name)
     RepoStore.listen(this.onChange)
@@ -24,22 +24,43 @@ const Repo = React.createClass({
 
   renderLoading() {
     return (
-      <Loading />
+      <div className="row">
+        <Loading />
+      </div>
     )
   },
 
   renderRepo() {
     return (
-      <div>
-        { this.state.repo.full_name } <br/>
-        { this.state.repo.language } <br/>
-      </div>
+        <div className='repo-details'>
+          <div className='repo-detals-name'>
+            { this.state.repo.name }
+          </div>
+          <div className='repo-details-avatar'>
+            <img className='circle' src={ this.state.repo.owner.avatar_url } width='90'></img>
+          </div>
+          <div>
+            <strong>{ this.state.repo.owner.login }</strong>
+          </div>
+          <div className='repo-details-content'>
+            <div className='repo-details-content-row'>
+              <i className="fa fa-star"></i> { this.state.repo.stargazers_count }
+            </div>
+            <div className='repo-details-content-row'>
+              <i className="fa fa-code-fork"></i> { this.state.repo.forks_count }
+            </div>
+            <div className='repo-details-content-row'>
+              <i className="fa fa-bug"></i> { this.state.repo.open_issues_count }
+            </div>
+          </div>
+          <div>{ this.state.repo.description }</div>
+        </div>
     )
   },
 
   render() {
     return (
-      <div className="row">
+      <div className='row'>
         { this.state.loading ? this.renderLoading() : this.renderRepo() }
       </div>
     )

@@ -4,3 +4,4 @@
 ### Usage:
 * <code>npm install</code> to install dependencies
 * <code>npm start</code> to build and run server
+* <code>npm test</code> to run tests

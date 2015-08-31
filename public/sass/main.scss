@@ -1,3 +1,30 @@
 .container {
   margin-top: 10em;
 }
+
+.repo-details {
+  display: flex;
+  color: #777;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.repo-detals-name {
+  margin: .8em;
+  font-size: 1.5em;
+}
+
+.repo-details-content {
+  background-color: #eee;
+  height: 5.5em;
+  width: 40%;
+  display: flex;
+  align-items: center;
+  margin: 2em;
+}
+
+.repo-details-content-row {
+  text-align: center;
+  flex: 1 0 auto;
+}
