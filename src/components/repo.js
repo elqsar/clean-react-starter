@@ -1,31 +1,31 @@
-var React = require('react');
-var RepoActions = require('../actions/repoActions');
-var RepoStore = require('../stores/repoStore');
-var Loading = require('./loading');
+import React from 'react'
+import RepoActions from '../actions/repoActions'
+import RepoStore from '../stores/repoStore'
+import Loading from './loading'
 
-module.exports = React.createClass({
+const Repo = React.createClass({
   getInitialState() {
-    return RepoStore.getState();
+    return RepoStore.getState()
   },
 
   onChange() {
-    this.setState(RepoStore.getState());
+    this.setState(RepoStore.getState())
   },
 
   componentWillMount() {
-    var params = this.props.params;
-    RepoActions.getRepoDetails(params.owner, params.name);
-    RepoStore.listen(this.onChange);
+    let { owner, name } = this.props.params
+    RepoActions.getRepoDetails(owner, name)
+    RepoStore.listen(this.onChange)
   },
 
   componentWillUnmount() {
-    RepoStore.unlisten(this.onChange);
+    RepoStore.unlisten(this.onChange)
   },
 
   renderLoading() {
     return (
       <Loading />
-    );
+    )
   },
 
   renderRepo() {
@@ -34,7 +34,7 @@ module.exports = React.createClass({
         { this.state.repo.full_name } <br/>
         { this.state.repo.language } <br/>
       </div>
-    );
+    )
   },
 
   render() {
@@ -42,6 +42,8 @@ module.exports = React.createClass({
       <div className="row">
         { this.state.loading ? this.renderLoading() : this.renderRepo() }
       </div>
-    );
+    )
   }
-});
+})
+
+export default Repo

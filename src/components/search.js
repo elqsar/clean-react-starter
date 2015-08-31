@@ -1,32 +1,34 @@
-var React = require('react');
-var SearchStore = require('../stores/searchStore');
-var RepoActions = require('../actions/repoActions');
-var RepoCard = require('./repoCard');
-var Loading = require('./loading');
+import React from 'react'
+import SearchStore from '../stores/searchStore'
+import RepoActions from '../actions/repoActions'
+import RepoCard from './repoCard'
+import Loading from './loading'
 
-module.exports = React.createClass({
+const Search = React.createClass({
   getInitialState() {
-    return SearchStore.getState();
+    return SearchStore.getState()
   },
 
   componentDidMount() {
-    SearchStore.listen(this.onChange);
+    SearchStore.listen(this.onChange)
   },
 
   componentWillUnmount() {
-    SearchStore.unlisten(this.onChange);
+    SearchStore.unlisten(this.onChange)
   },
 
   onChange(state) {
-    this.setState(state);
+    this.setState(state)
   },
 
   search(e) {
     e.preventDefault();
-    var searchTerm = this.refs.searchTerm.getDOMNode().value;
-    this.refs.searchTerm.getDOMNode().value = '';
+    var searchTerm = this.refs.searchTerm.getDOMNode().value
 
-    RepoActions.search(searchTerm);
+    if(searchTerm) {
+      this.refs.searchTerm.getDOMNode().value = ''
+      RepoActions.search(searchTerm)
+    }
   },
 
   renderSearch() {
@@ -41,7 +43,7 @@ module.exports = React.createClass({
           </div>
         </form>
       </div>
-    );
+    )
   },
 
   renderLoading() {
@@ -49,17 +51,17 @@ module.exports = React.createClass({
       <div className="row">
         <Loading />
       </div>
-    );
+    )
   },
 
   renderContent() {
     return (
       <div className="row">
-          { this.state.repos.map(function(repo) {
-              return <RepoCard repo={ repo }/>;
+          { this.state.repos.map((repo) => {
+              return <RepoCard key={ repo.id } repo={ repo }/>
           })}
       </div>
-    );
+    )
   },
 
   render() {
@@ -68,6 +70,8 @@ module.exports = React.createClass({
         { this.renderSearch() }
         { this.state.loading ? this.renderLoading() : this.renderContent() }
       </div>
-    );
+    )
   }
-});
+})
+
+export default Search

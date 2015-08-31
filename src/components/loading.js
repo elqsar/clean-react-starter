@@ -1,6 +1,6 @@
-var React = require('react');
+import React from 'react'
 
-var Loading = React.createClass({
+const Loading = React.createClass({
   render() {
     return (
       <div className="col s6 offset-s5">
@@ -12,8 +12,8 @@ var Loading = React.createClass({
           </div>
         </div>
       </div>
-    );
+    )
   }
-});
+})
 
-module.exports = Loading;
+export default Loading

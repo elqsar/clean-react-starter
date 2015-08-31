@@ -1,8 +1,8 @@
-var rest = require('superagent');
+import rest from 'superagent'
 
 class Github {
-  constructor(baseUrl) {
-    this.baseUrl = baseUrl;
+  constructor(baseUrl = 'https://api.github.com') {
+    this.baseUrl = baseUrl
   }
 
   searchRepos(searchTerm) {
@@ -12,9 +12,9 @@ class Github {
         .query({ q: searchTerm })
         .send()
         .end((err, result) => {
-          resolve(result.body.items);
-        });
-    });
+          resolve(result.body.items)
+        })
+    })
   }
 
   getRepoDetails(owner, name) {
@@ -23,10 +23,10 @@ class Github {
         .get(`${this.baseUrl}/repos/${owner}/${name}`)
         .send()
         .end((err, result) => {
-          resolve(result.body);
-      });
-    });
+          resolve(result.body)
+      })
+    })
   }
 }
 
-module.exports = Github;
+export default new Github()

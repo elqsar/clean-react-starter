@@ -1,25 +1,25 @@
-var alt = require('../alt');
-var RepoActions = require('../actions/repoActions');
+import alt from '../alt'
+import RepoActions from '../actions/repoActions'
 
 class RepoStore {
   constructor() {
-    this.repo = {};
-    this.loading = false;
+    this.repo = {}
+    this.loading = false
     this.bindListeners({
-      getRepoDetail: RepoActions.getRepoDetails,
+      getRepoDetails: RepoActions.getRepoDetails,
       onDetailSuccess: RepoActions.onDetailSuccess
-    });
+    })
   }
 
-  getRepoDetail() {
-    this.repo = {};
-    this.loading = true;
+  getRepoDetails() {
+    this.repo = {}
+    this.loading = true
   }
 
   onDetailSuccess(repo) {
-    this.loading = false;
-    this.repo = repo;
+    this.repo = repo
+    this.loading = false
   }
 }
 
-module.exports = alt.createStore(RepoStore, 'RepoStore');
+export default alt.createStore(RepoStore, 'RepoStore')

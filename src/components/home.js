@@ -1,8 +1,7 @@
-var React = require('react');
-var Router = require('react-router');
-var { RouteHandler } = Router;
+import React from 'react'
+import { RouteHandler } from 'react-router'
 
-module.exports = React.createClass({
+const Home = React.createClass({
   render() {
     return (
       <div>
@@ -10,6 +9,8 @@ module.exports = React.createClass({
           <RouteHandler />
         </div>
       </div>
-    );
+    )
   }
-});
+})
+
+export default Home

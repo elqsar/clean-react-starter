@@ -1,8 +1,7 @@
-var React = require('react');
-var Router = require('react-router');
-var Link = Router.Link;
+import React from 'react'
+import { Link } from 'react-router'
 
-var RepoCard = React.createClass({
+const RepoCard = React.createClass({
   render() {
     return (
       <div className="col s6">
@@ -17,8 +16,8 @@ var RepoCard = React.createClass({
           </div>
         </div>
       </div>
-    );
+    )
   }
-});
+})
 
-module.exports = RepoCard;
+export default RepoCard
