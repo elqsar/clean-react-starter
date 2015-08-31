@@ -1,6 +1,7 @@
 var React = require('react');
 var RepoActions = require('../actions/repoActions');
 var RepoStore = require('../stores/repoStore');
+var Loading = require('./loading');
 
 module.exports = React.createClass({
   getInitialState() {
@@ -21,11 +22,25 @@ module.exports = React.createClass({
     RepoStore.unlisten(this.onChange);
   },
 
+  renderLoading() {
+    return (
+      <Loading />
+    );
+  },
+
+  renderRepo() {
+    return (
+      <div>
+        { this.state.repo.full_name } <br/>
+        { this.state.repo.language } <br/>
+      </div>
+    );
+  },
+
   render() {
     return (
       <div className="row">
-        { this.state.repo.full_name } <br/>
-        { this.state.repo.language } <br/>
+        { this.state.loading ? this.renderLoading() : this.renderRepo() }
       </div>
     );
   }

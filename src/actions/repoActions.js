@@ -1,26 +1,21 @@
-var rest = require('superagent');
+var Api = require('../api/github');
 var alt = require('../alt');
+
+var github = new Api('https://api.github.com');
 
 class RepoActions {
   search(searchTerm) {
     this.dispatch();
-    rest
-      .get('https://api.github.com/search/repositories')
-      .query({ q: searchTerm })
-      .send()
-      .end((err, result) => {
-        this.actions.onSearchSuccess(result.body.items);
-      });
+    github.searchRepos(searchTerm).then((result) => {
+      this.actions.onSearchSuccess(result);
+    });
   }
 
   getRepoDetails(owner, name) {
     this.dispatch();
-    rest
-      .get(`https://api.github.com/repos/${owner}/${name}`)
-      .send()
-      .end((err, result) => {
-        this.actions.onDetailSuccess(result.body);
-      });
+    github.getRepoDetails(owner, name).then((result) => {
+      this.actions.onDetailSuccess(result);
+    });
   }
 
   onSearchSuccess(repos) {
