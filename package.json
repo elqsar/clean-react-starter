@@ -28,7 +28,7 @@
     "gulp-server-livereload": "latest",
     "gulp-util": "latest",
     "gulp-watch": "latest",
-    "jsdom": "latest",
+    "jsdom": "< 4.0.0",
     "mocha": "latest",
     "mocha-jsdom": "latest",
     "reactify": "latest",
