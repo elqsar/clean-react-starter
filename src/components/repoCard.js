@@ -9,7 +9,6 @@ const RepoCard = React.createClass({
           <div className="card-content white-text">
             <span className="card-title">{ this.props.repo.name }</span>
             <p>{ this.props.repo.description }</p>
-            <p>{ this.props.repo.owner.login }</p>
           </div>
           <div className="card-action">
             <Link to="repo" params={{ owner: this.props.repo.owner.login, name: this.props.repo.name }}>Details</Link>

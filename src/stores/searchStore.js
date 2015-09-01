@@ -1,13 +1,14 @@
 import alt from '../alt'
-import RepoActions from '../actions/repoActions'
+import { search, onSearchSuccess } from '../actions/repoActions'
+import ImmutableStore from 'alt/utils/ImmutableUtil';
 
 class SearchStore {
   constructor() {
     this.repos = []
     this.loading = false
     this.bindListeners({
-      searchRepos: RepoActions.search,
-      onSearchSuccess: RepoActions.onSearchSuccess,
+      searchRepos: search,
+      onSearchSuccess: onSearchSuccess,
     })
   }
 
@@ -22,4 +23,4 @@ class SearchStore {
   }
 }
 
-export default alt.createStore(SearchStore, 'SearchStore')
+export default alt.createStore(ImmutableStore(SearchStore), 'SearchStore')

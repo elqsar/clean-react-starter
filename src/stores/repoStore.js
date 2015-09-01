@@ -1,5 +1,6 @@
 import alt from '../alt'
-import RepoActions from '../actions/repoActions'
+import { getRepoDetails, onDetailSuccess } from '../actions/repoActions'
+import ImmutableStore from 'alt/utils/ImmutableUtil';
 
 class RepoStore {
   constructor() {
@@ -7,8 +8,8 @@ class RepoStore {
     this.repo.owner = {}
     this.loading = false
     this.bindListeners({
-      getRepoDetails: RepoActions.getRepoDetails,
-      onDetailSuccess: RepoActions.onDetailSuccess
+      getRepoDetails: getRepoDetails,
+      onDetailSuccess: onDetailSuccess
     })
   }
 
@@ -25,4 +26,4 @@ class RepoStore {
   }
 }
 
-export default alt.createStore(RepoStore, 'RepoStore')
+export default alt.createStore(ImmutableStore(RepoStore), 'RepoStore')

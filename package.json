@@ -11,12 +11,13 @@
   "license": "MIT",
   "dependencies": {
     "alt": "latest",
+    "immutable": "latest",
     "react": "latest",
     "react-router": "latest",
     "superagent": "latest"
   },
   "devDependencies": {
-    "babel": "^5.8.23",
+    "babel": "latest",
     "babelify": "latest",
     "browserify": "latest",
     "chai": "latest",
@@ -29,6 +30,7 @@
     "gulp-watch": "latest",
     "jsdom": "latest",
     "mocha": "latest",
+    "mocha-jsdom": "latest",
     "reactify": "latest",
     "rimraf": "latest",
     "sinon": "latest",
