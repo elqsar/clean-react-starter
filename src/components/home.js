@@ -6,7 +6,7 @@ const Home = React.createClass({
     return (
       <div>
         <div className="content">
-          <RouteHandler />
+          <RouteHandler/>
         </div>
       </div>
     )

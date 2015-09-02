@@ -17,8 +17,8 @@ const NotFound = React.createClass({
 
 export default (
   <Route path='/' handler={ Home }>
-    <DefaultRoute handler={ Search } />
-    <Route name='repo' path='/repo/:owner/:name' handler={ Repo } />
-    <NotFoundRoute handler={ NotFound } />
+    <DefaultRoute handler={ Search }/>
+    <Route name='repo' path='/repo/:owner/:name' handler={ Repo }/>
+    <NotFoundRoute handler={ NotFound }/>
   </Route>
 );
